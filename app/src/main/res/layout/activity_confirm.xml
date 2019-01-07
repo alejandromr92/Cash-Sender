@@ -1,6 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                             android:layout_width="match_parent"
-                                             android:layout_height="match_parent">
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <TextView
+        android:id="@+id/amount_info"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:text="Total amount: $amount"
+
+        app:layout_constraintTop_toTopOf="parent"
+
+        android:gravity="center_horizontal"
+        android:layout_marginTop="25dp"
+    />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/contacts_confirmation_list"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toBottomOf="@id/amount_info"
+
+        android:layout_marginTop="20dp"
+    />
+
+    <Button
+        android:id="@+id/confirm_operation_btn"
+
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="20dp"
+        android:text="Send"
+
+        app:layout_constraintTop_toBottomOf="@id/contacts_confirmation_list"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.4"
+    />
+
+
+
 
 </android.support.constraint.ConstraintLayout>
