@@ -1,12 +1,12 @@
 package com.example.alejandro.cashsender.network.model.mapper
 
-import com.example.alejandro.cashsender.domain.model.model.MarvelCharacter
+import com.example.alejandro.cashsender.domain.model.Contact
 import com.example.alejandro.cashsender.network.model.dto.CharactersDataResultsDto
 
 abstract class MarvelCharactersMapper {
     companion object {
-        fun map(charactersList: List<CharactersDataResultsDto>): List<MarvelCharacter> {
-            val list = ArrayList<MarvelCharacter>()
+        fun map(charactersList: List<CharactersDataResultsDto>): List<Contact> {
+            val list = ArrayList<Contact>()
 
             if (charactersList.isNotEmpty()){
                 for (c in charactersList){
@@ -17,6 +17,9 @@ abstract class MarvelCharactersMapper {
             return list
         }
 
-        fun map(dto: CharactersDataResultsDto) = MarvelCharacter(dto.name, dto.thumbnail.path + dto.thumbnail.extension)
+        fun map(dto: CharactersDataResultsDto) = Contact(
+            dto.name,
+            dto.thumbnail.path + "." + dto.thumbnail.extension
+        )
     }
 }
