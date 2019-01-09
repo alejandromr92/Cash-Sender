@@ -1,6 +1,5 @@
 package com.example.alejandro.cashsender
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.example.alejandro.cashsender.domain.model.Contact
 import com.example.alejandro.cashsender.presentation.presenter.GetMarvelCharactersPresenter
