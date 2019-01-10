@@ -7,5 +7,7 @@ interface Constants {
 
         const val MAX_AMOUNT = 1000.00
         const val MIN_AMOUNT = 0.01
+
+        const val PERMISSION_REQUEST = 270
     }
 }

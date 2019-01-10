@@ -1,4 +1,4 @@
-package com.example.alejandro.cashsender
+package com.example.alejandro.cashsender.presentation.ui.activities
 
 import android.Manifest
 import android.content.pm.PackageManager
@@ -7,13 +7,14 @@ import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
+import com.example.alejandro.cashsender.R
 import com.example.alejandro.cashsender.domain.model.Contact
+import com.example.alejandro.cashsender.presentation.Constants
 import com.example.alejandro.cashsender.presentation.extensions.AmountIntent
 import com.example.alejandro.cashsender.presentation.presenter.GetMarvelCharactersPresenter
 import com.example.alejandro.cashsender.presentation.presenter.GetPhoneContactsPresenter
 import com.example.alejandro.cashsender.presentation.presenter.impl.GetMarvelCharactersPresenterImpl
 import com.example.alejandro.cashsender.presentation.presenter.impl.GetPhoneContactsPresenterImpl
-import com.example.alejandro.cashsender.presentation.ui.activities.BaseActivity
 import com.example.alejandro.cashsender.presentation.ui.adapters.ContactsListAdapter
 import com.example.alejandro.cashsender.presentation.ui.adapters.OnContactSelected
 import com.example.alejandro.cashsender.utils.LoggerUtils
@@ -61,8 +62,6 @@ class ContactsActivity : BaseActivity(),
         this.configNextBtn()
 
         this.configRecyclerView()
-
-        this.configErrorMessage()
     }
 
     private fun configNextBtn(){
@@ -82,14 +81,6 @@ class ContactsActivity : BaseActivity(),
 
         this.contactsListAdapter = ContactsListAdapter(contactsList as ArrayList<Contact>, this)
         contacts_selection_list.adapter = contactsListAdapter
-    }
-
-    private fun configErrorMessage(){
-        //TODO
-    }
-
-    private fun displayContent(infoObtained: Boolean){
-        // TODO
     }
 
     override fun loadData() {
@@ -127,13 +118,13 @@ class ContactsActivity : BaseActivity(),
     fun requestPermission(permission: String) =
         ActivityCompat.requestPermissions(this,
             listOf(permission).toTypedArray(),
-            400) // TODO Add constant
+            Constants.PERMISSION_REQUEST)
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
         when (requestCode) {
-            400 ->{ // TODO add constant
+            Constants.PERMISSION_REQUEST ->{
                 val isPermissionsGranted = isPermissionGranted(Manifest.permission.READ_CONTACTS)
 
                 if(isPermissionsGranted){

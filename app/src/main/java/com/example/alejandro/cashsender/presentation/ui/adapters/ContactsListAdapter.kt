@@ -32,7 +32,7 @@ class ContactHolder(
         contact_phone_number.text = contact.phoneNumber
 
         if (contact.thumbnail.isNotBlank()){
-            contact_avatar.load(contact.thumbnail) //TODO add default avatar
+            contact_avatar.load(contact.thumbnail)
         }
 
         if (listener != null){
