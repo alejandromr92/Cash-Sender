@@ -4,10 +4,14 @@ import android.app.ProgressDialog
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.example.alejandro.cashsender.R
+import com.example.alejandro.cashsender.domain.model.Contact
 import com.example.alejandro.cashsender.presentation.presenter.BaseView
 import com.example.alejandro.cashsender.utils.LoggerUtils
+import java.util.ArrayList
 
 abstract class BaseActivity : AppCompatActivity(), BaseView {
+
+    protected var contactsSelectedList: MutableList<Contact>? = ArrayList()
 
     protected var TAG = ""
 

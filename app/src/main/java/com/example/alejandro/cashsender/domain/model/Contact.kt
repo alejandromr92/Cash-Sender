@@ -3,7 +3,7 @@ package com.example.alejandro.cashsender.domain.model
 import android.os.Parcel
 import android.os.Parcelable
 
-data class Contact(
+class Contact(
     val name: String,
     val thumbnail: String = "",
     val phoneNumber: String = ""
@@ -12,8 +12,7 @@ data class Contact(
         parcel.readString(),
         parcel.readString(),
         parcel.readString()
-    ) {
-    }
+    )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(name)

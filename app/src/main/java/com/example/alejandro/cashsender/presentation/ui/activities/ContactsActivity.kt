@@ -8,12 +8,12 @@ import android.support.v4.content.ContextCompat
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import com.example.alejandro.cashsender.domain.model.Contact
+import com.example.alejandro.cashsender.presentation.extensions.AmountIntent
 import com.example.alejandro.cashsender.presentation.presenter.GetMarvelCharactersPresenter
 import com.example.alejandro.cashsender.presentation.presenter.GetPhoneContactsPresenter
 import com.example.alejandro.cashsender.presentation.presenter.impl.GetMarvelCharactersPresenterImpl
 import com.example.alejandro.cashsender.presentation.presenter.impl.GetPhoneContactsPresenterImpl
 import com.example.alejandro.cashsender.presentation.ui.activities.BaseActivity
-import com.example.alejandro.cashsender.presentation.ui.adapters.ContactHolder
 import com.example.alejandro.cashsender.presentation.ui.adapters.ContactsListAdapter
 import com.example.alejandro.cashsender.presentation.ui.adapters.OnContactSelected
 import com.example.alejandro.cashsender.utils.LoggerUtils
@@ -33,8 +33,6 @@ class ContactsActivity : BaseActivity(),
     private var contactsListAdapter: ContactsListAdapter? = null
 
     private var contactsList: MutableList<Contact>? = null
-
-    private var contactsSelectedList: MutableList<Contact>? = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         this.layout = R.layout.activity_contacts
@@ -60,9 +58,17 @@ class ContactsActivity : BaseActivity(),
     override fun configViews() {
         super.configViews()
 
+        this.configNextBtn()
+
         this.configRecyclerView()
 
         this.configErrorMessage()
+    }
+
+    private fun configNextBtn(){
+        confirm_contacts_selected_btn.setOnClickListener {
+            navigateToAmount()
+        }
     }
 
     private fun configRecyclerView() {
@@ -95,6 +101,10 @@ class ContactsActivity : BaseActivity(),
     /**
      * Listeners
      */
+
+    private fun navigateToAmount(){
+        startActivity(this.AmountIntent(contactsSelectedList as MutableList))
+    }
 
     override fun onContactSelected(contact: Contact) {
         contactsSelectedList!!.add(contact)
@@ -142,7 +152,12 @@ class ContactsActivity : BaseActivity(),
      */
 
     override fun onMarvelCharactersRetrieved(marvelCharactersList: List<Contact>) {
-        contactsList!!.addAll(marvelCharactersList)
+
+        for (character in marvelCharactersList){
+            if (!this.contactsList!!.contains(character)){
+                this.contactsList!!.add(character)
+            }
+        }
 
         if (isPermissionGranted(Manifest.permission.READ_CONTACTS)){
             this.getPhoneContactsPresenter!!.getPhoneContacts(contentResolver)
@@ -157,7 +172,12 @@ class ContactsActivity : BaseActivity(),
     }
 
     override fun onPhoneContactsRetrieved(phoneContacts: List<Contact>) {
-        contactsList!!.addAll(phoneContacts)
+        for (contact in phoneContacts){
+            if (!this.contactsList!!.contains(contact)){
+                this.contactsList!!.add(contact)
+            }
+        }
+
         contactsListAdapter!!.notifyDataSetChanged()
     }
 
