@@ -177,7 +177,7 @@ class ContactsActivity : BaseActivity(),
                 this.contactsList!!.add(contact)
             }
         }
-
+        contactsList!!.sortBy { it.name }
         contactsListAdapter!!.notifyDataSetChanged()
     }
 

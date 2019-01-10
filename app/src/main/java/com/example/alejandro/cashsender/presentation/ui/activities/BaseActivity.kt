@@ -90,7 +90,7 @@ abstract class BaseActivity : AppCompatActivity(), BaseView {
      * Override in children to clear necessary data.
      */
     protected open fun clearData() {
-
+        this.contactsSelectedList!!.clear()
     }
 
     /**

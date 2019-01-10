@@ -11,15 +11,31 @@
     <TextView
         android:id="@+id/amount_info"
 
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:text="Total amount: $amount"
+        android:text="Total amount:"
 
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
 
         android:gravity="center_horizontal"
         android:layout_marginTop="25dp"
+        android:layout_marginEnd="25dp"
+    />
+
+    <TextView
+        android:id="@+id/amount_total"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toTopOf="@id/amount_info"
+        app:layout_constraintStart_toEndOf="@id/amount_info"
+
+        android:layout_marginStart="5dp"
+
     />
 
     <android.support.v7.widget.RecyclerView

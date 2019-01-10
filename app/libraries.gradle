@@ -11,6 +11,7 @@ ext {
     rx_kotlin_version = "2.2.0"
     rx_android_version = "2.1.0"
     picasso_version = "2.71828"
+    anko_version = "0.10.8"
 }
 
 dependencies {
@@ -44,7 +45,8 @@ dependencies {
     // Picasso
     implementation "com.squareup.picasso:picasso:$picasso_version"
 
-
+    // Anko
+    implementation "org.jetbrains.anko:anko:$anko_version"
 }
 
 androidExtensions {

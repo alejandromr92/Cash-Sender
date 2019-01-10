@@ -7,7 +7,6 @@ import com.example.alejandro.cashsender.domain.model.Contact
 import io.reactivex.Scheduler
 import io.reactivex.Single
 import io.reactivex.disposables.Disposables
-import java.lang.Exception
 
 class GetPhoneContactsInteractorImpl(
     private val observeOn: Scheduler,

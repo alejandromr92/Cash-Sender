@@ -8,10 +8,10 @@ import com.example.alejandro.cashsender.domain.model.Contact
 import com.example.alejandro.cashsender.presentation.extensions.inflate
 import com.example.alejandro.cashsender.presentation.extensions.load
 import kotlinx.android.synthetic.main.item_contact.view.*
-
 class ContactsListAdapter(
     private val items: List<Contact>,
-    private val listener: OnContactSelected
+    private val listener: OnContactSelected?,
+    private val amount: Double = 0.0
 ): RecyclerView.Adapter<ContactHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactHolder =
@@ -21,27 +21,33 @@ class ContactsListAdapter(
         items.size
 
     override fun onBindViewHolder(holder: ContactHolder, position: Int) =
-            holder.bind(items[position], listener)
+            holder.bind(items[position], listener?: null, amount)
 }
 
 class ContactHolder(
     itemView: View
 ): RecyclerView.ViewHolder(itemView){
-    fun bind(contact: Contact, listener: OnContactSelected) = with(itemView){
+    fun bind(contact: Contact, listener: OnContactSelected?, amount: Double) = with(itemView){
         contact_name.text = contact.name
         contact_phone_number.text = contact.phoneNumber
 
         if (contact.thumbnail.isNotBlank()){
             contact_avatar.load(contact.thumbnail) //TODO add default avatar
         }
-        contact_selector.setOnClickListener{
-            if (contact_selector.isChecked){
-                listener.onContactSelected(contact)
-            } else {
-                listener.onContactUnselected(contact)
-            }
-        }
 
+        if (listener != null){
+            contact_selector.setOnClickListener{
+                if (contact_selector.isChecked){
+                    listener.onContactSelected(contact)
+                } else {
+                    listener.onContactUnselected(contact)
+                }
+            }
+        } else {
+            contact_selector.visibility = View.INVISIBLE
+            contact_amount.visibility = View.VISIBLE
+            contact_amount.text = amount.toString()
+        }
     }
 }
 

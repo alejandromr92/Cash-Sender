@@ -1,8 +1,6 @@
 package com.example.alejandro.cashsender.presentation.ui.activities
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import com.example.alejandro.cashsender.R
 import com.example.alejandro.cashsender.presentation.Constants
 import com.example.alejandro.cashsender.presentation.extensions.SummaryIntent
