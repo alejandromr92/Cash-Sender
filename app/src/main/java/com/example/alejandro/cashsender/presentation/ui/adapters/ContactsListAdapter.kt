@@ -1,5 +1,6 @@
 package com.example.alejandro.cashsender.presentation.ui.adapters
 
+import android.graphics.drawable.Drawable
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,8 @@ import com.example.alejandro.cashsender.domain.model.Contact
 import com.example.alejandro.cashsender.presentation.extensions.inflate
 import com.example.alejandro.cashsender.presentation.extensions.load
 import kotlinx.android.synthetic.main.item_contact.view.*
+import org.jetbrains.anko.image
+
 class ContactsListAdapter(
     private val items: List<Contact>,
     private val listener: OnContactSelected?,
@@ -30,6 +33,7 @@ class ContactHolder(
     fun bind(contact: Contact, listener: OnContactSelected?, amount: Double) = with(itemView){
         contact_name.text = contact.name
         contact_phone_number.text = contact.phoneNumber
+        contact_avatar.setImageResource(R.drawable.person)
 
         if (contact.thumbnail.isNotBlank()){
             contact_avatar.load(contact.thumbnail)
