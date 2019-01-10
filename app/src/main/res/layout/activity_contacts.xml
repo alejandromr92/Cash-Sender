@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
 
         android:layout_marginTop="20dp"
-        android:text="Next"
+        android:text="@string/next"
 
         app:layout_constraintTop_toBottomOf="@id/contacts_selection_list"
         app:layout_constraintStart_toStartOf="parent"

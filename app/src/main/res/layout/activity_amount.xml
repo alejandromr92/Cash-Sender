@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintWidth_percent="0.4"
 
-        android:text="Confirmar"
+        android:text="@string/confirm"
 
         app:layout_constraintTop_toBottomOf="@id/amount_input"
         app:layout_constraintStart_toStartOf="@id/amount_input"
