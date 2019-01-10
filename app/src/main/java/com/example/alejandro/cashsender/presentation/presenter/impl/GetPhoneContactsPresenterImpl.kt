@@ -14,7 +14,7 @@ class GetPhoneContactsPresenterImpl(
 
     override fun getPhoneContacts(resolver: ContentResolver) {
         view.showProgress()
-        val interactor = GetPhoneContactsInteractorImpl(threadExecutor, mainThread)
+        val interactor = GetPhoneContactsInteractorImpl(mainThread, threadExecutor)
         interactor.execute(resolver, ::onPhoneContactsRetrieved, ::onPhoneContactsRetrievingError)
     }
 

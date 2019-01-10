@@ -50,8 +50,6 @@ class GetPhoneContactsInteractorImpl(
                     cursorPhone.close()
                 }
             }
-        } else {
-            throw Exception()
         }
         cursor.close()
 

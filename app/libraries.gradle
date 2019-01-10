@@ -10,6 +10,7 @@ ext {
     espresso_version= "3.0.2"
     rx_kotlin_version = "2.2.0"
     rx_android_version = "2.1.0"
+    picasso_version = "2.71828"
 }
 
 dependencies {
@@ -39,6 +40,10 @@ dependencies {
 
     // Constraint layout
     implementation "com.android.support.constraint:constraint-layout:$constraint_layout_version"
+
+    // Picasso
+    implementation "com.squareup.picasso:picasso:$picasso_version"
+
 
 }
 
