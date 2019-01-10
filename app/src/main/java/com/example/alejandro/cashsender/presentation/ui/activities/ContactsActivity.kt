@@ -13,14 +13,19 @@ import com.example.alejandro.cashsender.presentation.presenter.GetPhoneContactsP
 import com.example.alejandro.cashsender.presentation.presenter.impl.GetMarvelCharactersPresenterImpl
 import com.example.alejandro.cashsender.presentation.presenter.impl.GetPhoneContactsPresenterImpl
 import com.example.alejandro.cashsender.presentation.ui.activities.BaseActivity
+import com.example.alejandro.cashsender.presentation.ui.adapters.ContactHolder
 import com.example.alejandro.cashsender.presentation.ui.adapters.ContactsListAdapter
+import com.example.alejandro.cashsender.presentation.ui.adapters.OnContactSelected
 import com.example.alejandro.cashsender.utils.LoggerUtils
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_contacts.*
 import java.util.ArrayList
 
-class ContactsActivity : BaseActivity(), GetMarvelCharactersPresenter.View, GetPhoneContactsPresenter.View {
+class ContactsActivity : BaseActivity(),
+    GetMarvelCharactersPresenter.View, GetPhoneContactsPresenter.View,
+    OnContactSelected{
+
     private var getMarvelCharactersPresenter: GetMarvelCharactersPresenter? = null
 
     private var getPhoneContactsPresenter: GetPhoneContactsPresenter? = null
@@ -28,6 +33,8 @@ class ContactsActivity : BaseActivity(), GetMarvelCharactersPresenter.View, GetP
     private var contactsListAdapter: ContactsListAdapter? = null
 
     private var contactsList: MutableList<Contact>? = null
+
+    private var contactsSelectedList: MutableList<Contact>? = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         this.layout = R.layout.activity_contacts
@@ -67,7 +74,7 @@ class ContactsActivity : BaseActivity(), GetMarvelCharactersPresenter.View, GetP
         val dividerItemDecoration = DividerItemDecoration(contacts_selection_list.context, layoutManager.orientation)
         contacts_selection_list.addItemDecoration(dividerItemDecoration)
 
-        this.contactsListAdapter = ContactsListAdapter(contactsList as ArrayList<Contact>)
+        this.contactsListAdapter = ContactsListAdapter(contactsList as ArrayList<Contact>, this)
         contacts_selection_list.adapter = contactsListAdapter
     }
 
@@ -83,6 +90,18 @@ class ContactsActivity : BaseActivity(), GetMarvelCharactersPresenter.View, GetP
         super.loadData()
 
         this.getMarvelCharactersPresenter!!.getMarvelCharacters()
+    }
+
+    /**
+     * Listeners
+     */
+
+    override fun onContactSelected(contact: Contact) {
+        contactsSelectedList!!.add(contact)
+    }
+
+    override fun onContactUnselected(contact: Contact) {
+        contactsSelectedList!!.remove(contact)
     }
 
     /**
