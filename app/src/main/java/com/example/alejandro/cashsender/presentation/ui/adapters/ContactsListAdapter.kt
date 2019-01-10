@@ -29,8 +29,10 @@ class ContactHolder(
     fun bind(contact: Contact) = with(itemView) {
         contact_name.text = contact.name
         contact_phone_number.text = contact.phoneNumber
-        // TODO cargar foto si tiene
-        contact_avatar.load(contact.thumbnail)
+
+        if (contact.thumbnail.isNotBlank()){
+            contact_avatar.load(contact.thumbnail)
+        }
 
     }
 }
