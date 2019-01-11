@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import com.example.alejandro.cashsender.R
 import com.example.alejandro.cashsender.domain.model.Contact
 import com.example.alejandro.cashsender.presentation.Constants
+import com.example.alejandro.cashsender.presentation.extensions.ContactsSelectionIntent
 import com.example.alejandro.cashsender.presentation.ui.adapters.ContactsListAdapter
 import kotlinx.android.synthetic.main.activity_summary.*
 import org.jetbrains.anko.toast
@@ -41,7 +42,8 @@ class SummaryActivity : BaseActivity() {
 
     private fun configNextBtn(){
         confirm_operation_btn.setOnClickListener {
-            toast("Transference done!")
+            toast(getString(R.string.transference_done))
+            startActivity(ContactsSelectionIntent())
         }
     }
 

@@ -21,6 +21,7 @@ import com.example.alejandro.cashsender.utils.LoggerUtils
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_contacts.*
+import org.jetbrains.anko.toast
 import java.util.ArrayList
 
 class ContactsActivity : BaseActivity(),
@@ -66,7 +67,11 @@ class ContactsActivity : BaseActivity(),
 
     private fun configNextBtn(){
         confirm_contacts_selected_btn.setOnClickListener {
-            navigateToAmount()
+            if (contactsSelectedList!!.size > 0){
+                navigateToAmount()
+            } else {
+                toast(getString(R.string.warning_contacts_no_selected))
+            }
         }
     }
 
@@ -128,7 +133,6 @@ class ContactsActivity : BaseActivity(),
                 val isPermissionsGranted = isPermissionGranted(Manifest.permission.READ_CONTACTS)
 
                 if(isPermissionsGranted){
-                    // Do the task now
                     this.getPhoneContactsPresenter!!.getPhoneContacts(contentResolver)
                 }else{
                     // TODO add rationale

@@ -7,14 +7,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
 
-    android:padding="20dp"
+    android:padding="@dimen/item_contact_padding"
     >
 
     <ImageView
         android:id="@+id/contact_avatar"
 
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="@dimen/item_contact_avatar_size"
+        android:layout_height="@dimen/item_contact_avatar_size"
 
         android:src="@drawable/person"
     />
@@ -22,20 +22,20 @@
     <TextView
         android:id="@+id/contact_name"
 
-        android:layout_width="0dp"
+        android:layout_width="@dimen/zero"
         android:layout_height="wrap_content"
 
-        tools:text="Alejandro Muñoz Rabal"
+        tools:text="@string/dummy_contact_name"
         app:layout_constraintWidth_percent="0.7"
 
         app:layout_constraintStart_toEndOf="@id/contact_avatar"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="@dimen/item_contact_texts_margin_start"
     />
 
     <TextView
         android:id="@+id/contact_phone_number"
 
-        android:layout_width="0dp"
+        android:layout_width="@dimen/zero"
         android:layout_height="wrap_content"
 
         tools:text="@tools:sample/us_phones"
@@ -62,7 +62,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        tools:text="95.37 €"
+        tools:text="@string/dummy_amount"
         android:maxLength="9"
         android:visibility="invisible"
 

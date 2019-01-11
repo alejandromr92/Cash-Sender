@@ -2,7 +2,6 @@
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -21,8 +20,8 @@
         app:layout_constraintEnd_toEndOf="parent"
 
         android:gravity="center_horizontal"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="25dp"
+        android:layout_marginTop="@dimen/total_amount_margin_top"
+        android:layout_marginEnd="@dimen/total_amount_margin_end"
     />
 
     <TextView
@@ -34,7 +33,7 @@
         app:layout_constraintTop_toTopOf="@id/amount_info"
         app:layout_constraintStart_toEndOf="@id/amount_info"
 
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="@dimen/total_amount_margin_start"
 
     />
 
@@ -46,16 +45,16 @@
 
         app:layout_constraintTop_toBottomOf="@id/amount_info"
 
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/contacts_transfer_margin_top"
     />
 
     <Button
         android:id="@+id/confirm_operation_btn"
 
-        android:layout_width="0dp"
+        android:layout_width="@dimen/zero"
         android:layout_height="wrap_content"
 
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/btn_transfer_margin_top"
         android:text="@string/send"
 
         app:layout_constraintTop_toBottomOf="@id/contacts_confirmation_list"

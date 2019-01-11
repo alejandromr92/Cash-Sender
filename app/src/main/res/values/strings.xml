@@ -5,4 +5,10 @@
     <string name="next">Next</string>
     <string name="total_amount">Total amount:</string>
     <string name="send">Send</string>
+    <string name="dummy_contact_name">Alejandro Muñoz Rabal</string>
+    <string name="dummy_amount">95.37 €</string>
+    <string name="warning_contacts_no_selected">You must select at least 1 contact!</string>
+    <string name="contacts_selection_info">Select the contacts you want to transfer money to</string>
+    <string name="amount_input_hint">Amount in €</string>
+    <string name="transference_done">Transference done!</string>
 </resources>

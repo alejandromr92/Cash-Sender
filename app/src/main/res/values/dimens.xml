@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="item_contact_padding">20dp</dimen>
+    <dimen name="item_contact_avatar_size">60dp</dimen>
+    <dimen name="zero">0dp</dimen>
+    <dimen name="item_contact_texts_margin_start">10dp</dimen>
+    <dimen name="contacts_selection_info_margin_top">25dp</dimen>
+    <dimen name="contacts_selection_list_margin_top">20dp</dimen>
+    <dimen name="contacts_selection_btn_margin_top">20dp</dimen>
+    <dimen name="amount_input_margin_top">25dp</dimen>
+    <dimen name="amount_confirm_btn_margin_top">20dp</dimen>
+    <dimen name="total_amount_margin_top">25dp</dimen>
+    <dimen name="total_amount_margin_end">25dp</dimen>
+    <dimen name="total_amount_margin_start">5dp</dimen>
+    <dimen name="contacts_transfer_margin_top">20dp</dimen>
+    <dimen name="btn_transfer_margin_top">20dp</dimen>
+</resources>
