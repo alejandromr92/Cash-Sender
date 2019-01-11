@@ -94,6 +94,12 @@ class ContactsActivity : BaseActivity(),
         this.getMarvelCharactersPresenter!!.getMarvelCharacters()
     }
 
+    override fun clearData() {
+        super.clearData()
+
+        this.contactsSelectedList!!.clear()
+    }
+
     /**
      * Listeners
      */

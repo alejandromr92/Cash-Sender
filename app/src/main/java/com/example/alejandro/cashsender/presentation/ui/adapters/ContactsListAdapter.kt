@@ -50,7 +50,7 @@ class ContactHolder(
         } else {
             contact_selector.visibility = View.INVISIBLE
             contact_amount.visibility = View.VISIBLE
-            contact_amount.text = amount.toString()
+            contact_amount.text = amount.toString().format("%.2f")
         }
     }
 }
