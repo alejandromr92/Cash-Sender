@@ -135,7 +135,8 @@ class ContactsActivity : BaseActivity(),
                 if(isPermissionsGranted){
                     this.getPhoneContactsPresenter!!.getPhoneContacts(contentResolver)
                 }else{
-                    // TODO add rationale
+                    toast("You won't be able to make transference to your contacts without giving access permission")
+                    contactsListAdapter!!.notifyDataSetChanged()
                 }
                 return
             }
