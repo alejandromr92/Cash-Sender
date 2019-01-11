@@ -13,18 +13,15 @@ class GetPhoneContactsPresenterImpl(
 ): GetPhoneContactsPresenter {
 
     override fun getPhoneContacts(resolver: ContentResolver) {
-        view.showProgress()
         val interactor = GetPhoneContactsInteractorImpl(mainThread, threadExecutor)
         interactor.execute(resolver, ::onPhoneContactsRetrieved, ::onPhoneContactsRetrievingError)
     }
 
     private fun onPhoneContactsRetrieved(phoneContacts: List<Contact>){
-        view.hideProgress()
         view.onPhoneContactsRetrieved(phoneContacts)
 
     }
     private fun onPhoneContactsRetrievingError(throwable: Throwable){
-        view.hideProgress()
         view.onPhoneContactsRetrievingError()
     }
 

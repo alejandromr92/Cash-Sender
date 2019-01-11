@@ -13,18 +13,15 @@ class GetMarvelCharactersPresenterImpl(
 
 
     override fun getMarvelCharacters() {
-        view.showProgress()
         val interactor = GetMarvelCharactersInteractorImpl(mainThread, threadExecutor)
         interactor.execute(::onMarvelCharactersRetrieved, ::onMarvelCharactersRetrievingError)
     }
 
     private fun onMarvelCharactersRetrieved(marvelCharactersList: List<Contact>){
-        view.hideProgress()
         view.onMarvelCharactersRetrieved(marvelCharactersList)
     }
 
     private fun onMarvelCharactersRetrievingError(throwable: Throwable){
-        view.hideProgress()
         view.onMarvelCharactersRetrievingError()
     }
 }

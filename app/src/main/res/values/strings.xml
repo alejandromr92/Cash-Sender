@@ -11,4 +11,7 @@
     <string name="contacts_selection_info">Select the contacts you want to transfer money to</string>
     <string name="amount_input_hint">Amount in €</string>
     <string name="transference_done">Transference done!</string>
+    <string name="contacts_permission_required_info">You won\'t be able to make transference to your contacts without
+        giving access permission
+    </string>
 </resources>

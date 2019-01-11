@@ -90,7 +90,7 @@ class ContactsActivity : BaseActivity(),
 
     override fun loadData() {
         super.loadData()
-
+        showProgress()
         this.getMarvelCharactersPresenter!!.getMarvelCharacters()
     }
 
@@ -141,8 +141,9 @@ class ContactsActivity : BaseActivity(),
                 if(isPermissionsGranted){
                     this.getPhoneContactsPresenter!!.getPhoneContacts(contentResolver)
                 }else{
-                    toast("You won't be able to make transference to your contacts without giving access permission")
+                    toast(getString(R.string.contacts_permission_required_info))
                     contactsListAdapter!!.notifyDataSetChanged()
+                    hideProgress()
                 }
                 return
             }
@@ -171,6 +172,7 @@ class ContactsActivity : BaseActivity(),
 
     override fun onMarvelCharactersRetrievingError() {
         LoggerUtils.logMessage("CHARACTERS", "Error")
+        hideProgress()
     }
 
     override fun onPhoneContactsRetrieved(phoneContacts: List<Contact>) {
@@ -181,9 +183,11 @@ class ContactsActivity : BaseActivity(),
         }
         contactsList!!.sortBy { it.name }
         contactsListAdapter!!.notifyDataSetChanged()
+        hideProgress()
     }
 
     override fun onPhoneContactsRetrievingError() {
         LoggerUtils.logMessage("PHONE CONTACTS", "Error")
+        hideProgress()
     }
 }
