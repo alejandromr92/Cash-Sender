@@ -12,6 +12,7 @@ ext {
     rx_android_version = "2.1.0"
     picasso_version = "2.71828"
     anko_version = "0.10.8"
+    barista_version = "2.7.1"
 }
 
 dependencies {
@@ -20,9 +21,27 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "com.android.support:appcompat-v7:$support_version"
     implementation "com.android.support.constraint:constraint-layout:$constraint_layout_version"
+
+    // Test
     testImplementation "junit:junit:$junit_version"
+    testImplementation 'org.mockito:mockito-core:2.23.0'
+    testImplementation 'com.nhaarman:mockito-kotlin:1.6.0'
+    testImplementation 'org.mockito:mockito-inline:2.8.47'
+
     androidTestImplementation "com.android.support.test:runner:$runner_version"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$espresso_version"
+    androidTestImplementation "androidx.arch.core:core-testing:2.0.0"
+    androidTestImplementation "org.mockito:mockito-android:2.23.0"
+    androidTestImplementation "com.nhaarman:mockito-kotlin:1.6.0"
+    androidTestImplementation("com.schibsted.spain:barista:2.7.0") {
+        exclude group: 'com.android.support'
+        exclude group: 'com.android.support.test.espresso'
+        exclude group: 'com.android.support.test.uiautomator'
+        exclude group: 'org.jetbrains.kotlin'
+    }
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:3.1.0-beta01"
+    androidTestImplementation "androidx.test.uiautomator:uiautomator:2.2.0-beta02"
+    androidTestImplementation "androidx.test.espresso:espresso-intents:3.1.0-beta01"
 
     //Reactive Rx
     implementation "io.reactivex.rxjava2:rxkotlin:$rx_kotlin_version"
